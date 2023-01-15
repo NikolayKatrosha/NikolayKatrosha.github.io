@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+
+</head>
+
+<body style="	background-color: #0e0f18;
+color: #fff;">
+
+<h1 style="text-align:center" >Program</h1>
+
+<div class="form-group">
+    <label for="inp1">Enter initial height:</label> 
+    <input type="text" class="form-control" id="inp1"> m
+    <p></p>
+    <label for="inp2">Enter initial speed:</label> 
+      <input type="text" class="form-control" id="inp2"> m/s
+      <p></p>
+    <label for="inp3">Enter final speed:</label>
+      <input type="text" class="form-control" id="inp3"> m/s
+      <p></p>
+      <label for="inp4">Speed of gas flow rate:</label>
+      <input type="text" class="form-control" id="inp4"> m/s
+      <p></p>
+      
+    </div>
+
+    <button onclick="multi()"  class="btn btn-primary" >Solve</button>
+
+    <script>
+        function multi(){
+            var h =document.getElementById('inp1').value;
+            var v0 = document.getElementById('inp2').value;
+            var v1 = document.getElementById('inp3').value;
+            var c = document.getElementById('inp4').value;
+            
+            num1 = (2*9.7*h/c);
+            num2 =(2*9.7*h/(c*c));
+            num3 = Math.log((v1-num1.toFixed(2))/(v0-num1.toFixed(2))).toFixed(5);
+            num4 = ((2+num2)*num3);
+            num5 = (v1-v0)/c;
+            num6= ((num5+num4)*h).toFixed(5);  
+
+
+            var1= c/9.7;
+            var2 = Math.log(v0*(v1-num1)/(v1*(v0-num1)))*0.4343.toFixed(5);
+            var3= (var1*var2+(h/c)*num3*0.4343).toFixed(3);
+
+
+        mas1= (((v1-v0)*0.4343));
+        mas2= (2* 9.7*var3);
+        mas3 = (mas1+mas2)/c;
+        mas4=Math.pow(Math.E, mas3/0.4343).toFixed(4);
+        
+       document.write("S1 - S0 = " + num6 +"m <br/>");
+       document.write("t1-t0= " + var3 + "s <br/>");
+       document.write("m0/m1= " + mas4+ " <br/>"); 
+      
+        }
+        </script> 
+
+</body>
+
+</html>
